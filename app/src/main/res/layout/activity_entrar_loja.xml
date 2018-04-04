@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gabri.meucontrole.EntrarLojaActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/cnpj_entrar_loja_et"
+        style="@style/Campos"
+        android:hint="CNPJ" />
+    <EditText
+        android:id="@+id/senha_entrar_loja_et"
+        style="@style/Campos"
+        android:hint="Senha da Loja"/>
+
+    <Button
+        android:id="@+id/entrar_loja_bt"
+        style="@style/Campos"
+        android:text="Entrar"/>
+</LinearLayout>

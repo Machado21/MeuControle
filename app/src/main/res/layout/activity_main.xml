@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.gabri.meucontrole.MainActivity">
+
+    <EditText
+        android:id="@+id/nome_produto_ed"
+        style="@style/Campos"
+        android:layout_gravity="center"
+        android:hint="Nome do Produto" />
+
+    <EditText
+        android:id="@+id/codigo_produto_ed"
+        style="@style/Campos"
+        android:layout_gravity="center"
+        android:hint="Codigo do Produto" />
+
+    <LinearLayout
+        style="@style/Campos"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/quant_produto_ed"
+            style="@style/Campos"
+            android:layout_width="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:hint="Quant."
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/valor_produto_ed"
+            style="@style/Campos"
+            android:layout_width="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="3"
+            android:hint="Valor"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cadastrar_produto_bt"
+        style="@style/Campos"
+        android:text="Cadastrar" />
+
+    <Button
+        android:id="@+id/produtos_intent_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="3dp"
+        android:clickable="true"
+        android:text="Produtos" />
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gabri.meucontrole.LoginActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/login_email_p_et"
+        style="@style/Campos"
+        android:inputType="textEmailAddress"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/login_senha_p_et"
+        style="@style/Campos"
+        android:inputType="textPassword"
+        android:hint="Senha"/>
+    <Button
+        android:id="@+id/login_pessoa_bt"
+        style="@style/Campos"
+        android:text="Entrar"/>
+
+    <TextView
+        android:id="@+id/cadastrar_se"
+        style="@style/Campos"
+        android:clickable="true"
+        android:layout_marginTop="3dp"
+        android:gravity="right"
+        android:textSize="17dp"
+        android:text="Cadastrar - se"/>
+
+</LinearLayout>

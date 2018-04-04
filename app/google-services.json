@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "21505660104",
+    "firebase_url": "https://meucontrole-c169c.firebaseio.com",
+    "project_id": "meucontrole-c169c",
+    "storage_bucket": "meucontrole-c169c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21505660104:android:aafff80e0c6c45f9",
+        "android_client_info": {
+          "package_name": "com.example.gabri.meucontrole"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21505660104-o8mk91bmtfm0s6g53acq8c7e0lrhgtr6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gabri.meucontrole",
+            "certificate_hash": "2982ce5318d2b280a62858f4e4a258d9ae241211"
+          }
+        },
+        {
+          "client_id": "21505660104-lev6p63f8trt8gllabl95henqmd76j4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqXHsDMnMqGU0RQB7bFlJ3VdCa3Uy_VGA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21505660104-lev6p63f8trt8gllabl95henqmd76j4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gabri.meucontrole.CadastrarLojaActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/nome_loja_cad_l_et"
+        style="@style/Campos"
+        android:inputType="textPersonName"
+        android:hint="Nome da Loja"/>
+
+    <EditText
+        android:id="@+id/cnpj_loja_cad_l_et"
+        style="@style/Campos"
+        android:inputType="number"
+        android:hint="CNPJ"/>
+
+    <EditText
+        android:id="@+id/senha_loja_cad_et"
+        style="@style/Campos"
+        android:inputType="textPassword"
+        android:hint="Senha da Loja"/>
+
+    <EditText
+        android:id="@+id/confirm_senha_loja_et"
+        style="@style/Campos"
+        android:inputType="textPassword"
+        android:hint="Confirmar Senha"/>
+
+    <Button
+        android:id="@+id/cadastra_loja_bt"
+        style="@style/Campos"
+        android:text="Cadastrar Loja"/>
+    
+    <TextView
+        android:id="@+id/text_test"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
