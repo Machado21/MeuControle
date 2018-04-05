@@ -18,11 +18,12 @@ public class Loja {
     private String mCnpj;
     private String mSenha;
     private String mProrietario;
+    private Loja store;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference pullRef;
 
-    public Loja () {
+    public Loja() {
 
     }
 
@@ -67,7 +68,8 @@ public class Loja {
 
     public void cadastraProdutos(Produto produto, String loja) {
 
-        pullRef = database.getReference("Lojas").child(this.mNome).child("Produtos").child(produto.getmNome());
+        pullRef = database.getReference("Lojas").child(loja).child("Produtos").child(produto.getmNome());
         pullRef.setValue(produto);
     }
+
 }

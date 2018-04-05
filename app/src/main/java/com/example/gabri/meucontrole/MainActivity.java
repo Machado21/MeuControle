@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference reference, lojaRef, pessoaRef;
+    private DatabaseReference reference, lojaRef, produtoRef, pessoaRef;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String userEmail = user.getEmail();
 
+        //TODO Colocar tudo isso na classe Pessoa
         pessoaRef = database.getReference("Usuarios");
         pessoaRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -101,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
                 String valorProd = valorProduto.getText().toString();
 
                 produto = new Produto(nomeProd, codProd, quantProd, valorProd);
-                loja.cadastraProdutos(produto, pessoa.getmLoja());
+
+                produtoRef = database.getReference("Lojas").child(pessoa.getmLoja()).child("Produtos").child(produto.getmNome());
+                produtoRef.setValue(produto);
 
                 //reference.setValue(produto);
             }
