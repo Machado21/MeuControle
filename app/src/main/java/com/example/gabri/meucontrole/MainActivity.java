@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Pessoa pessoa;
     private Loja loja;
 
+    public static final String EXTRA_MESSAGE = "nome.da.loja";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        intent = new Intent(this, ProdutoActivity.class);
         botaoCad = findViewById(R.id.cadastrar_produto_bt);
 
         botaoCad.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
         botaoBusc = findViewById(R.id.produtos_intent_tv);
 
+        intent = new Intent(this, ProdutoActivity.class);
+
         botaoBusc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(intent);
             }
         });

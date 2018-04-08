@@ -124,8 +124,6 @@ public class EntrarLojaActivity extends AppCompatActivity {
 
                     }
                 });
-
-
             }
         });
     }
