@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private Pessoa pessoa;
     private Loja loja;
 
-    public static final String EXTRA_MESSAGE = "nome.da.loja";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

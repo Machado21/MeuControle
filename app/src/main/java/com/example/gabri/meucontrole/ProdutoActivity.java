@@ -3,6 +3,8 @@ package com.example.gabri.meucontrole;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,12 +22,11 @@ import java.util.Map;
 
 public class ProdutoActivity extends AppCompatActivity {
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference prodRef, pessoaRef;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference prodRef, userRef;
     ProdutoAdapter adapter;
 
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-    FirebaseUser user;
+    FirebaseAuth auth;
 
     Pessoa usuario;
 
@@ -34,101 +35,105 @@ public class ProdutoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.produto_list);
 
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user;
         user = auth.getCurrentUser();
+        final String emailUser = user.getEmail();
 
-        final String userEmail = user.getEmail();
+        userRef = database.getReference("Usuarios");
+        userRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if (dataSnapshot.getValue(Pessoa.class).getmEmail().equals(emailUser)){
+                    String nomeU = dataSnapshot.getValue(Pessoa.class).getmNome();
+                    String cpfU = dataSnapshot.getValue(Pessoa.class).getmCpf();
+                    String emailU = dataSnapshot.getValue(Pessoa.class).getmEmail();
+                    String idU = dataSnapshot.getValue(Pessoa.class).getUid();
+                    String lojaU = dataSnapshot.getValue(Pessoa.class).getmLoja();
 
-        pessoaRef = database.getReference("Usuarios");
-
-        if(usuario == null) {
-            pessoaRef.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    if (dataSnapshot.getValue(Pessoa.class).getmEmail().equals(userEmail)) {
-
-                        String name = dataSnapshot.getValue(Pessoa.class).getmNome();
-                        String cpf = dataSnapshot.getValue(Pessoa.class).getmCpf();
-                        String email = dataSnapshot.getValue(Pessoa.class).getmEmail();
-                        String id = dataSnapshot.getValue(Pessoa.class).getUid();
-                        String store = dataSnapshot.getValue(Pessoa.class).getmLoja();
-
-                        usuario = new Pessoa(name, cpf, email, id);
-                        usuario.setmLoja(store);
-
-                    }
+                    usuario = new Pessoa(nomeU, cpfU, emailU, idU);
+                    usuario.setmLoja(lojaU);
                 }
+            }
 
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                }
+            }
 
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                }
+            }
 
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-        }
+            }
+        });
 
         final ArrayList<Produto> produtos = new ArrayList<Produto>();
 
-        produtos.add(new Produto("Teste","00","1","100.00"));
+        produtos.add(new Produto("Teste", "00", "1", "100.00"));
 
+        Button atualizar = findViewById(R.id.atulizar);
+        atualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (usuario != null) {
 
-        if (usuario != null) {
+                    String loja = usuario.getmLoja();
+                    prodRef = database.getReference("Lojas").child(loja).child("Produtos");
 
-            String loja = usuario.getmLoja();
-            prodRef = database.getReference("Lojas").child(loja).child("Produtos");
+                    //###
+                    prodRef.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-            //###
-            prodRef.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            Produto produtoN = dataSnapshot.getValue(Produto.class);
 
-                    Produto produtoN = dataSnapshot.getValue(Produto.class);
+                            if (!produtos.contains(produtoN)) {
+                                produtos.add(produtoN);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
 
-                    produtos.add(produtoN);
-                    adapter.notifyDataSetChanged();
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    //###
                 }
 
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+        });
 
-                }
+        adapter = new ProdutoAdapter(this, produtos);
 
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
+        ListView listView = findViewById(R.id.list);
 
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            //###
-        }
-
-            adapter = new ProdutoAdapter(this, produtos);
-
-            ListView listView = findViewById(R.id.list);
-
-            listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 }
