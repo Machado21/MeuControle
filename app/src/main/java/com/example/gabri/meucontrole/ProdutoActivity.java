@@ -18,6 +18,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ProdutoActivity extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class ProdutoActivity extends AppCompatActivity {
         userRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if (dataSnapshot.getValue(Pessoa.class).getmEmail().equals(emailUser)){
+                if (dataSnapshot.getValue(Pessoa.class).getmEmail().equals(emailUser)) {
                     String nomeU = dataSnapshot.getValue(Pessoa.class).getmNome();
                     String cpfU = dataSnapshot.getValue(Pessoa.class).getmCpf();
                     String emailU = dataSnapshot.getValue(Pessoa.class).getmEmail();
@@ -79,13 +80,15 @@ public class ProdutoActivity extends AppCompatActivity {
 
         final ArrayList<Produto> produtos = new ArrayList<Produto>();
 
-        produtos.add(new Produto("Teste", "00", "1", "100.00"));
 
         Button atualizar = findViewById(R.id.atulizar);
         atualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (usuario != null) {
+
+                    produtos.clear();
+                    produtos.add(new Produto("Teste", "00", "1", "100.00"));
 
                     String loja = usuario.getmLoja();
                     prodRef = database.getReference("Lojas").child(loja).child("Produtos");
@@ -97,10 +100,8 @@ public class ProdutoActivity extends AppCompatActivity {
 
                             Produto produtoN = dataSnapshot.getValue(Produto.class);
 
-                            if (!produtos.contains(produtoN)) {
-                                produtos.add(produtoN);
-                                adapter.notifyDataSetChanged();
-                            }
+                            produtos.add(produtoN);
+                            adapter.notifyDataSetChanged();
                         }
 
                         @Override
