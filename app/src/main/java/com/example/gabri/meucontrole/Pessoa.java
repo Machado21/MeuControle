@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by gabri on 27/03/2018.
  */
 
-public class Pessoa{
+public class Pessoa {
 
     private String uid;
     private String mNome;
@@ -21,11 +21,12 @@ public class Pessoa{
     private String mEmail;
     private String mLoja;
 
+
     public Pessoa() {
 
     }
 
-    public Pessoa(String nome, String cpf,String email, String id) {
+    public Pessoa(String nome, String cpf, String email, String id) {
         mNome = nome;
         mCpf = cpf;
         mEmail = email;

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference reference, lojaRef, produtoRef, pessoaRef;
+    private DatabaseReference reference, produtoRef, pessoaRef;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         botaoCad = findViewById(R.id.cadastrar_produto_bt);
 
         botaoCad.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
                 produto = new Produto(nomeProd, codProd, quantProd, valorProd);
 
+                reference = database.getReference("Geral").child(codProd);
                 produtoRef = database.getReference("Lojas").child(pessoa.getmLoja()).child("Produtos").child(produto.getmNome());
+                reference.setValue(produto);
                 produtoRef.setValue(produto);
+
 
                 //reference.setValue(produto);
             }
