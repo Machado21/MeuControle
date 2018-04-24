@@ -46,6 +46,8 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         senhaLojaET = findViewById(R.id.senha_loja_cad_et);
         confirmLojaET = findViewById(R.id.confirm_senha_loja_et);
 
+        cnpjET.addTextChangedListener(MaskEditUtil.mask(cnpjET, MaskEditUtil.FORMAT_CNPJ));
+
         cadastrarLoja = findViewById(R.id.cadastra_loja_bt);
 
         mAuth = FirebaseAuth.getInstance();

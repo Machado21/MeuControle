@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -108,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
                 reference.setValue(produto);
                 produtoRef.setValue(produto);
 
+                nomeProduto.setText("");
+                codigoProduto.setText("");
+                quantProduto.setText("");
+                valorProduto.setText("");
+
+                Toast.makeText(MainActivity.this, "Produto cadastrado", Toast.LENGTH_SHORT).show();
 
                 //reference.setValue(produto);
             }
