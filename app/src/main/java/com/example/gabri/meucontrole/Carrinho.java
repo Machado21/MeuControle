@@ -1,5 +1,7 @@
 package com.example.gabri.meucontrole;
 
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class Carrinho {
@@ -19,6 +21,10 @@ public class Carrinho {
 
     public ArrayList<Produto> getProdutosCarro() {
         return produtosCarro;
+    }
+
+    public int getQuantCarinho() {
+        return produtosCarro.size();
     }
 
     public void setProdutosCarro(Produto produtosCarro) {

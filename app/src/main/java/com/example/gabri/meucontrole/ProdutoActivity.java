@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +36,10 @@ public class ProdutoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.produto_list);
+
+        final Carrinho carrinho = Carrinho.getInstance();
+
+        final TextView qtcar = findViewById(R.id.car_number);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user;
@@ -127,6 +132,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
                     //###
                 }
+                qtcar.setText(carrinho.getQuantCarinho());
 
             }
         });
@@ -136,5 +142,6 @@ public class ProdutoActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.list);
 
         listView.setAdapter(adapter);
+
     }
 }

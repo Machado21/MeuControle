@@ -48,7 +48,7 @@ public class CadastroActivity extends AppCompatActivity {
         senhaEditText = findViewById(R.id.senha_pessoa_cad_et);
         confirmEditText = findViewById(R.id.confirm_senha_pessoa_et);
 
-        cpfEditText.addTextChangedListener(MaskEditUtil.mask(cpfEditText,MaskEditUtil.FORMAT_CPF));
+        //cpfEditText.addTextChangedListener(MaskEditUtil.mask(cpfEditText,MaskEditUtil.FORMAT_CPF));
 
         criarLoja.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -34,6 +34,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         final Carrinho carrinho = Carrinho.getInstance();
         final Produto currentProduto = getItem(position);
 
+
         TextView nomeTextView = listItenView.findViewById(R.id.nome_produto_tv);
         nomeTextView.setText(currentProduto.getmNome());
 
@@ -48,6 +49,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
             @Override
             public void onClick(View v) {
                 carrinho.setProdutosCarro(currentProduto);
+
             }
         });
 
