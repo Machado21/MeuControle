@@ -54,6 +54,10 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         final String userEmail = user.getEmail();
         //###
+        /*
+        * Aqui é pego os dados do usuario logado
+        * para cadastrar uma referencia da loja que será criada
+        * */
         //TODO Tentar fazer isso dentro da classe Pessoa
         pessoaRef = database.getReference("Usuarios");
         pessoaRef.addChildEventListener(new ChildEventListener() {
@@ -88,6 +92,10 @@ public class CadastrarLojaActivity extends AppCompatActivity {
         });
         //###
         intentMain = new Intent(this, MainActivity.class);
+        /*
+        * Aqui é feito o cadastro da loja
+        * e associa a loja ao usuario logado.
+        * */
         cadastrarLoja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,9 +115,9 @@ public class CadastrarLojaActivity extends AppCompatActivity {
 
                     loja = new Loja(nomeLoja, cnpj, senhaLoja, pessoa.getmCpf());
 
-                    pessoa.setmLoja(loja.getmNome());
+                    pessoa.setmLoja(loja.getmCnpj());
 
-                    lojaRef = database.getReference("Lojas").child(loja.getmNome());
+                    lojaRef = database.getReference("Lojas").child(loja.getmCnpj());
                     pessoaRef = database.getReference("Usuarios").child(pessoa.getmCpf());
                     lojaRef.setValue(loja);
                     pessoaRef.setValue(pessoa);

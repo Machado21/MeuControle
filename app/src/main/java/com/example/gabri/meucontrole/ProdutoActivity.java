@@ -132,7 +132,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
                     //###
                 }
-                qtcar.setText(carrinho.getQuantCarinho());
+                //qtcar.setText(carrinho.getQuantCarinho());
 
             }
         });
