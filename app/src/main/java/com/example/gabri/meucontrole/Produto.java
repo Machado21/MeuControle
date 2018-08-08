@@ -10,7 +10,7 @@ public class Produto {
 
     private String mCodigo;
 
-    private String mQuantidade;
+    private int mQuantidade;
 
     private String mValor;
 
@@ -18,7 +18,7 @@ public class Produto {
 
     }
 
-    public Produto (String nome, String code, String quantidade, String valor) {
+    public Produto (String nome, String code, int quantidade, String valor) {
         mNome = nome;
         mCodigo = code;
         mQuantidade = quantidade;
@@ -33,8 +33,12 @@ public class Produto {
         return mCodigo;
     }
 
-    public String getmQuantidade() {
+    public int getmQuantidade() {
         return mQuantidade;
+    }
+
+    public void setmQuantidade(int quantidade) {
+        mQuantidade += quantidade;
     }
 
     public String getmValor() {

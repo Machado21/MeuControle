@@ -93,7 +93,7 @@ public class ProdutoActivity extends AppCompatActivity {
                 if (usuario != null) {
 
                     produtos.clear();
-                    produtos.add(new Produto("Teste", "00", "1", "100.00"));
+                //    produtos.add(new Produto("Teste", "00", "1", "100.00"));
 
                     String loja = usuario.getmLoja();
                     prodRef = database.getReference("Lojas").child(loja).child("Produtos");

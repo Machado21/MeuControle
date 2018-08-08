@@ -39,7 +39,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         nomeTextView.setText(currentProduto.getmNome());
 
         TextView quantiTextView = listItenView.findViewById(R.id.quant_produto_tv);
-        quantiTextView.setText("Quant: " + currentProduto.getmQuantidade());
+        quantiTextView.setText("Quant: " + String.valueOf(currentProduto.getmQuantidade()));
 
         TextView valorTextView = listItenView.findViewById(R.id.valor_produto_tv);
         valorTextView.setText("R$ " + currentProduto.getmValor());
